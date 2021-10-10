@@ -1,0 +1,84 @@
+import java.util.*;
+public class Cipher
+{
+public static void main(String args[])
+{
+String  message,encryptmessage=" ",decryptmessage=" ";
+int  key,a;
+char ch;
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter the message : ");
+message = sc.nextLine();
+System.out.println("1. To Encript ");
+System.out.println("2. To Decript ");
+a = sc.nextInt();
+System.out.println("Enter the key:");
+key = sc.nextInt();
+switch(a)
+{
+case 1:
+{
+for(int i=0; i < message.length();i++)          
+{
+ch = message.charAt(i);
+if(ch>= 'a' && ch<= 'z')             
+{
+ch = (char)(ch + key);               
+if(ch > 'z')                                            
+{
+ch = (char)(ch+'z'-'a'-1);            
+}
+encryptmessage+=ch;
+}
+else if(ch >= 'A' && ch <= 'Z')
+ {
+ch= (char) (ch + key);
+if(ch > 'Z') 
+{
+ch= (char) (ch-'Z'-'A'-1);
+}
+encryptmessage+=ch;
+}
+else 
+{
+encryptmessage+=ch;
+}
+}
+System.out.println("Encrypted message :" + encryptmessage);
+}
+break;
+
+case 2:
+{
+for(int i=0;i<message.length();++i)
+{
+ch=message.charAt(i);
+if (ch>='a'&&ch<='z')
+{
+ch=(char)(ch-key);
+if (ch<'a')
+{
+ch=(char)(ch+'z'-'a'+1);
+}
+decryptmessage+=ch;
+}
+else if(ch>='A' && ch<='Z')
+{
+ch=(char)(ch-key);
+if (ch<'A')
+{
+ch=(char)(ch+'z'-'A'+1);
+}
+decryptmessage+=ch;
+}
+else
+decryptmessage+=ch;
+}
+System.out.println("Decrypted message="+decryptmessage);
+break;
+}
+}
+}
+}
+
+
